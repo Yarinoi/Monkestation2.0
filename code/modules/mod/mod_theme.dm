@@ -1618,6 +1618,40 @@
 	acid = 100
 	wound = 15
 
+/datum/mod_theme/heck
+	name = "H.E.C.K."
+	desc = "Hostile Environment Cross-Kinetic Suit: A suit designed to withstand the wide variety of hazards from Lavaland. It wasn't enough for its last owner."
+		extended_desc = "something something FROM THE DEPTHS OF HELL THIS SUIT ROSE OOOOO \
+				yeah this is placeholder text lmfao"
+	default_skin = "heck"
+	armor_type = /datum/armor/modtheme_heck
+	complexity_max = DEFAULT_MAX_COMPLEXITY
+	charge_drain = DEFAULT_CHARGE_DRAIN * 0.5
+	slowdown_inactive = 0
+	slowdown_active = 0
+	skins = list(
+		"heck" = list(
+			HELMET_LAYER = null,
+			HELMET_FLAGS = list(
+			),
+			CHESTPLATE_FLAGS = list(
+			),
+			GAUNTLETS_FLAGS = list(
+			),
+			BOOTS_FLAGS = list(
+			),
+		),
+	)
+
+/datum/armor/modtheme_heck
+	melee = 70
+	bullet = 40
+	laser = 10
+	energy = 20
+	bomb = 50
+	fire = 100
+	acid = 100
+
 /datum/mod_theme/debug
 	name = "debug"
 	desc = "Strangely nostalgic."
