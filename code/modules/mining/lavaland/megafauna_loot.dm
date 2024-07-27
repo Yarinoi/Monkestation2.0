@@ -364,14 +364,25 @@
 	)
 	skins = list(
 		"heck" = list(
-			HELMET_LAYER = null,
+			HELMET_LAYER = NECK_LAYER,
 			HELMET_FLAGS = list(
-			),
+				UNSEALED_CLOTHING = SNUG_FIT,
+				SEALED_CLOTHING = THICKMATERIAL|STOPSPRESSUREDAMAGE,
+				UNSEALED_INVISIBILITY = HIDEFACIALHAIR,
+				SEALED_INVISIBILITY = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT,
+				SEALED_COVER = HEADCOVERSMOUTH|HEADCOVERSEYES|PEPPERPROOF,
 			CHESTPLATE_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
+				SEALED_INVISIBILITY = HIDEJUMPSUIT,
 			),
 			GAUNTLETS_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
 			),
 			BOOTS_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
 			),
 		),
 	)
@@ -392,8 +403,52 @@
 	)
 
 /obj/item/mod/module/bloodlust
+	name = "H.E.C.K module"
+	module_type = MODULE_USABLE
+	complexity = 3
+	use_power_cost = DEFAULT_CHARGE_DRAIN
 	removable = FALSE
-	incompatible_modules = list(/obj/item/mod/module/armor_booster) //maybe only not allow retractive plates and allow other armor booster mods so that syndicate miners can have a fun time, ask other people lol
+	incompatible_modules = list(/obj/item/mod/module/bloodlust, /obj/item/mod/module/armor_booster) //maybe only not allow retractive plates and allow other armor booster mods so that syndicate miners can have a fun time, ask other people lol
+
+/obj/item/mod/module/bloodlust/on_suit_activation()
+	AddComponent(/datum/component/butchering/wearable, \
+	speed = 0.5 SECONDS, \
+	effectiveness = 150, \
+	bonus_modifier = 0, \
+	butcher_sound = null, \
+	disabled = null, \
+	can_be_blunt = TRUE, \
+	butcher_callback = CALLBACK(src, PROC_REF(consume)), \
+	)
+	mod.wearer.add_traits(list(), MOD_TRAIT)
+	mod.helmet.flash_protect = FLASH_PROTECTION_WELDER
+
+/obj/item/mod/module/bloodlust/on_suit_deactivation(deleting = FALSE)
+	mod.wearer.remove_traits(list(), MOD_TRAIT)
+	if(deleting)
+		return
+	mod.helmet.flash_protect = initial(mod.helmet.flash_protect)
+
+/obj/item/clothing/head/hooded/hostile_environment/Initialize(mapload)
+	. = ..()
+	
+
+/obj/item/clothing/head/hooded/hostile_environment/equipped(mob/user, slot, initial = FALSE)
+	. = ..()
+	to_chat(user, span_notice("You feel a bloodlust. You can now butcher corpses with your bare arms."))
+
+/obj/item/clothing/head/hooded/hostile_environment/dropped(mob/user, silent = FALSE)
+	. = ..()
+	to_chat(user, span_notice("You lose your bloodlust."))
+
+/obj/item/clothing/head/hooded/hostile_environment/proc/consume(mob/living/user, mob/living/butchered)
+	if(butchered.mob_biotypes & (MOB_ROBOTIC | MOB_SPIRIT))
+		return
+	var/health_consumed = butchered.maxHealth * 0.1
+	user.heal_ordered_damage(health_consumed, list(BRUTE, BURN, TOX))
+	to_chat(user, span_notice("You heal from the corpse of [butchered]."))
+	var/datum/client_colour/color = user.add_client_colour(/datum/client_colour/bloodlust)
+	QDEL_IN(color, 1 SECONDS)
 
 /obj/item/mod/control/pre_equipped/heck/process(seconds_per_tick)
 	. = ..()
