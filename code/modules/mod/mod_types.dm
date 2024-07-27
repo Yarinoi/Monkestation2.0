@@ -502,13 +502,6 @@
 		/obj/item/mod/module/anomaly_locked/kinesis/plus,
 	)
 
-/obj/item/mod/control/pre_equipped/heck
-	theme = /datum/mod_theme/heck
-	initial_modules = list(
-		/obj/item/mod/module/welding,
-		/obj/item/mod/module/mouthhole,
-	)
-
 //these exist for the prefs menu
 /obj/item/mod/control/pre_equipped/empty
 
