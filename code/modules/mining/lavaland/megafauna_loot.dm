@@ -348,6 +348,62 @@
 
 #define MAX_BLOOD_LEVEL 100
 
+/datum/mod_theme/heck
+	name = "H.E.C.K"
+	desc = "Hostile Environment Cross-Kinetic Suit: A suit designed to withstand the wide variety of hazards from Lavaland. It wasn't enough for its last owner."
+		extended_desc = "something something FROM THE DEPTHS OF HELL THIS SUIT ROSE OOOOO \
+				yeah this is placeholder text lmfao i'll come up with lore later"
+	default_skin = "heck"
+	armor_type = /datum/armor/modtheme_heck
+	complexity_max = DEFAULT_MAX_COMPLEXITY
+	charge_drain = DEFAULT_CHARGE_DRAIN
+	slowdown_inactive = 0.6
+	slowdown_active = 0
+	inbuilt_modules = list(
+		/obj/item/mod/module/bloodlust
+	)
+	skins = list(
+		"heck" = list(
+			HELMET_LAYER = null,
+			HELMET_FLAGS = list(
+			),
+			CHESTPLATE_FLAGS = list(
+			),
+			GAUNTLETS_FLAGS = list(
+			),
+			BOOTS_FLAGS = list(
+			),
+		),
+	)
+
+/datum/armor/modtheme_heck
+	melee = 70
+	bullet = 40
+	laser = 10
+	energy = 20
+	bomb = 50
+	fire = 100
+	acid = 100
+
+/obj/item/mod/control/pre_equipped/heck
+	theme = /datum/mod_theme/heck
+	initial_modules = list(
+		/obj/item/mod/module/mouthhole,
+	)
+
+/obj/item/mod/module/bloodlust
+	removable = FALSE
+	incompatible_modules = list(/obj/item/mod/module/armor_booster) //maybe only not allow retractive plates and allow other armor booster mods so that syndicate miners can have a fun time, ask other people lol
+
+/obj/item/mod/control/pre_equipped/heck/process(seconds_per_tick)
+	. = ..()
+	var/mob/living/carbon/wearer = loc
+	if(istype(wearer) && SPT_PROB(1, seconds_per_tick)) //cursed by bubblegum
+		if(prob(7.5))
+			wearer.cause_hallucination(/datum/hallucination/oh_yeah, "H.E.C.K suit", haunt_them = TRUE)
+		else
+			to_chat(wearer, span_warning("[pick("You hear faint whispers.","You smell ash.","You feel hot.","You hear a roar in the distance.")]"))
+
 /obj/item/soulscythe
 	name = "soulscythe"
 	desc = "An old relic of hell created by devils to establish themselves as the leadership of hell over the demons. It grows stronger while it possesses a powerful soul."
