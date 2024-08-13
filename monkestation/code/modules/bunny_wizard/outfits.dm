@@ -14,9 +14,6 @@
 /datum/outfit/cursed_bunny/post_equip(mob/living/carbon/human/equipped_on, visualsOnly=FALSE)
 	if(visualsOnly)
 		return
-	equipped_on.underwear = "Nude"
-	equipped_on.undershirt = "Nude"
-	equipped_on.socks = "Nude"
 	var/list/no_drops = list()
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_FEET)
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_ICLOTHING)
@@ -25,7 +22,7 @@
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_NECK)
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_GLOVES)
 	for(var/obj/item/trait_needed as anything in no_drops)
-		ADD_TRAIT(trait_needed, TRAIT_NODROP, CURSED_ITEM_TRAIT(trait_needed.type))
+		ADD_TRAIT(trait_needed, CURSED_ITEM_TRAIT(trait_needed.type))
 		trait_needed.name = "cursed " + trait_needed.name
 
 /datum/outfit/cursed_bunny/color
@@ -34,9 +31,6 @@
 /datum/outfit/cursed_bunny/color/post_equip(mob/living/carbon/human/equipped_on, visualsOnly=FALSE)
 	if(visualsOnly)
 		return
-	equipped_on.underwear = "Nude"
-	equipped_on.undershirt = "Nude"
-	equipped_on.socks = "Nude"
 	var/bunny_color = random_color()
 	equipped_on.w_uniform?.greyscale_colors = "#[bunny_color]#[bunny_color]#ffffff#87502e"
 	equipped_on.wear_suit?.greyscale_colors = "#[bunny_color]"
@@ -62,7 +56,7 @@
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_NECK)
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_GLOVES)
 	for(var/obj/item/trait_needed as anything in no_drops)
-		ADD_TRAIT(trait_needed, TRAIT_NODROP, CURSED_ITEM_TRAIT(trait_needed.type))
+		ADD_TRAIT(trait_needed, CURSED_ITEM_TRAIT(trait_needed.type))
 		trait_needed.name = "cursed " + trait_needed.name
 
 /datum/outfit/cursed_bunny/syndicate
@@ -139,7 +133,7 @@
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_HEAD)
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_NECK)
 	for(var/obj/item/trait_needed as anything in no_drops)
-		ADD_TRAIT(trait_needed, TRAIT_NODROP, CURSED_ITEM_TRAIT(trait_needed.type))
+		ADD_TRAIT(trait_needed, CURSED_ITEM_TRAIT(trait_needed.type))
 		trait_needed.name = "cursed " + trait_needed.name
 
 
