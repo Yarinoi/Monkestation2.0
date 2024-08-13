@@ -1,6 +1,6 @@
 /obj/item/gun/magic/staff/bunny
 	name = "staff of bunnies"
-	desc = "An artefact that spits bolts of lagomorphic energy which cause the target's appearence and clothing to change."
+	desc = "An artefact that spits bolts of lagomorphic energy which cause the target's clothing to change."
 	icon = 'monkestation/icons/obj/guns/magic.dmi'
 	worn_icon = 'monkestation/icons/mob/clothing/back.dmi'
 	lefthand_file = 'monkestation/icons/mob/inhands/weapons/staves_lefthand.dmi'
@@ -61,13 +61,11 @@
 	var/obj/effect/particle_effect/fluid/smoke/exit_poof = new(get_turf(src))
 	exit_poof.lifetime = 2 SECONDS
 	for(var/obj/item/clothing/maybe_cursed as anything in get_equipped_items())
-		if(HAS_TRAIT_FROM(maybe_cursed, TRAIT_NODROP, CURSED_ITEM_TRAIT(maybe_cursed.type)))
-			REMOVE_TRAIT(maybe_cursed, TRAIT_NODROP, CURSED_ITEM_TRAIT(maybe_cursed.type)) //Get rid fo their cursed gear for different cursed gear
+		if(HAS_TRAIT_FROM(maybe_cursed, CURSED_ITEM_TRAIT(maybe_cursed.type)))
+			REMOVE_TRAIT(maybe_cursed, CURSED_ITEM_TRAIT(maybe_cursed.type)) //Get rid fo their cursed gear for different cursed gear
 
 	unequip_everything()
 	to_chat(src, span_notice("Your clothing falls to the floor and you seem to be wearing something different!"))
-	src.physique = FEMALE
-	update_body(is_creating = TRUE) //actually update your body sprite
 	if(IS_WIZARD(src))
 		equipOutfit(/datum/outfit/cursed_bunny/magician)
 		return
