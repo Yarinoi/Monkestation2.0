@@ -53,7 +53,7 @@
 
 /datum/spellbook_entry/item/wandbunny
 	name = "Wand of Bunnies"
-	desc = "An artefact that spits bolts of lagomorphic energy which cause the target's appearence and clothing to change. Unlike most wands, it is able to recharge its own power. This magic doesn't effect machines or animals."
+	desc = "An artefact that spits bolts of lagomorphic energy which cause the target's clothing to change. Unlike most wands, it is able to recharge its own power. This magic doesn't effect machines or animals."
 	item_path = /obj/item/gun/magic/wand/bunny
 	category = "Offensive"
 
@@ -72,37 +72,6 @@
 	if(isplasmaman(src))
 		equipOutfit(/datum/outfit/plasmaman/cursed_bunny)
 		return
-	var/bunny_theme = pick_weight(list(
-	"Color" = 43,
-	 pick(list(
-		"British",
-		"Communist",
-		"USA",
-	)) = 30,
-	"Black" = 16,
-	"Centcomm" = 2,
-	"Syndicate" = 2,
-	))
-
-	switch(bunny_theme)
-		if("Color")
-			equipOutfit(/datum/outfit/cursed_bunny/color)
-			return
-		if("British")
-			equipOutfit(/datum/outfit/cursed_bunny/british)
-			return
-		if("Communist")
-			equipOutfit(/datum/outfit/cursed_bunny/communist)
-			return
-		if("USA")
-			equipOutfit(/datum/outfit/cursed_bunny/usa)
-			return
-		if("Black")
-			equipOutfit(/datum/outfit/cursed_bunny)
-			return
-		if("Syndicate")
-			equipOutfit(/datum/outfit/cursed_bunny/syndicate)
-			return
-		if("Centcomm")
-			equipOutfit(/datum/outfit/cursed_bunny/centcom)
-			return
+	else
+		equipOutfit(/datum/outfit/cursed_bunny/costume)
+		return
