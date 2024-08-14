@@ -22,8 +22,32 @@
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_NECK)
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_GLOVES)
 	for(var/obj/item/trait_needed as anything in no_drops)
-		ADD_TRAIT(trait_needed, CURSED_ITEM_TRAIT(trait_needed.type))
+		ADD_TRAIT(trait_needed, TRAIT_NODROP CURSED_ITEM_TRAIT(trait_needed.type))
 		trait_needed.name = "cursed " + trait_needed.name
+
+/datum/outfit/cursed_bunny/costume
+	name = "Cursed Bunny Costume"
+	uniform = null
+	suit = /obj/item/clothing/suit/costume/bunnysuit
+	head = /obj/item/clothing/head/costume/bunnyhead
+	shoes = /obj/item/clothing/shoes/clown_shoes/clown_jester_shoes
+	neck = null
+	r_hand = /obj/item/food/hotcrossbun
+	l_hand = null
+	r_pocket = null
+	l_pocket = /obj/item/food/chocolatebunny
+
+var/list/no_drops = list()
+	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_FEET)
+	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_ICLOTHING)
+	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_OCLOTHING)
+	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_HEAD)
+	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_NECK)
+	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_GLOVES)
+	for(var/obj/item/trait_needed as anything in no_drops)
+		ADD_TRAIT(trait_needed, TRAIT_NODROP CURSED_ITEM_TRAIT(trait_needed.type))
+		trait_needed.name = "cursed " + trait_needed.name
+
 
 /datum/outfit/cursed_bunny/color
 	name = "Cursed Bunny (Random Color)"
@@ -56,48 +80,8 @@
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_NECK)
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_GLOVES)
 	for(var/obj/item/trait_needed as anything in no_drops)
-		ADD_TRAIT(trait_needed, CURSED_ITEM_TRAIT(trait_needed.type))
+		ADD_TRAIT(trait_needed, TRAIT_NODROP CURSED_ITEM_TRAIT(trait_needed.type))
 		trait_needed.name = "cursed " + trait_needed.name
-
-/datum/outfit/cursed_bunny/syndicate
-	name = "Cursed Bunny (Syndicate)"
-	uniform = /obj/item/clothing/under/syndicate/syndibunny
-	suit = /obj/item/clothing/suit/jacket/tailcoat/syndicate
-	head = /obj/item/clothing/head/playbunnyears/syndicate
-	neck = /obj/item/clothing/neck/tie/bunnytie/syndicate/tied
-	r_pocket = /obj/item/toy/cards/deck/syndicate
-
-/datum/outfit/cursed_bunny/british
-	name = "Cursed Bunny (British)"
-	uniform = /obj/item/clothing/under/costume/playbunny/british
-	suit = /obj/item/clothing/suit/jacket/tailcoat/british
-	shoes = /obj/item/clothing/shoes/heels/blue
-	head = /obj/item/clothing/head/playbunnyears/british
-	neck = /obj/item/clothing/neck/tie/bunnytie/blue/tied
-
-/datum/outfit/cursed_bunny/communist
-	name = "Cursed Bunny (Communist)"
-	uniform = /obj/item/clothing/under/costume/playbunny/communist
-	suit = /obj/item/clothing/suit/jacket/tailcoat/communist
-	shoes = /obj/item/clothing/shoes/heels/red
-	head = /obj/item/clothing/head/playbunnyears/communist
-	neck = /obj/item/clothing/neck/tie/bunnytie/communist/tied
-
-/datum/outfit/cursed_bunny/usa
-	name = "Cursed Bunny (USA)"
-	uniform = /obj/item/clothing/under/costume/playbunny/usa
-	suit = /obj/item/clothing/suit/jacket/tailcoat/usa
-	shoes = /obj/item/clothing/shoes/heels/red
-	head = /obj/item/clothing/head/playbunnyears/usa
-	neck = /obj/item/clothing/neck/tie/bunnytie/blue/tied
-
-/datum/outfit/cursed_bunny/centcom
-	name = "Cursed Bunny (Centcom)"
-	uniform = /obj/item/clothing/under/costume/playbunny/centcom
-	suit = /obj/item/clothing/suit/jacket/tailcoat/centcom
-	shoes = /obj/item/clothing/shoes/heels/centcom
-	head = /obj/item/clothing/head/playbunnyears/centcom
-	neck = /obj/item/clothing/neck/tie/bunnytie/centcom/tied
 
 /datum/outfit/cursed_bunny/magician
 	name = "Cursed Bunny (Magician)"
