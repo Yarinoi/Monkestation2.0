@@ -28,12 +28,8 @@
 /datum/outfit/cursed_bunny/costume
 	name = "Cursed Bunny Costume"
 	uniform = null
-	suit = /obj/item/clothing/suit/costume/bunnysuit{
-	slowdown = 0
-	}
-	head = /obj/item/clothing/head/costume/bunnyhead{
-	slowdown = 0
-	}
+	suit = /obj/item/clothing/suit/costume/bunnysuit/regular
+	head = /obj/item/clothing/head/costume/bunnyhead/regular
 	shoes = /obj/item/clothing/shoes/clown_shoes/clown_jester_shoes
 	neck = null
 	r_hand = /obj/item/food/hotcrossbun
