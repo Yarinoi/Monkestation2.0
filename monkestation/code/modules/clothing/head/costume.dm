@@ -129,3 +129,7 @@ BUNNY EARS
 /*
 END OF BUNNY EARS
 */
+
+/obj/item/clothing/head/costume/bunnysuit/regular //the real bunny hat
+	slowdown = 0
+	desc = "Considerably more cute than 'Frank'. It looks old."
