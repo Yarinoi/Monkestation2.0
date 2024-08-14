@@ -22,7 +22,7 @@
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_NECK)
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_GLOVES)
 	for(var/obj/item/trait_needed as anything in no_drops)
-		ADD_TRAIT(trait_needed, TRAIT_NODROP CURSED_ITEM_TRAIT(trait_needed.type))
+		ADD_TRAIT(trait_needed, TRAIT_NODROP, CURSED_ITEM_TRAIT(trait_needed.type))
 		trait_needed.name = "cursed " + trait_needed.name
 
 /datum/outfit/cursed_bunny/costume
@@ -45,7 +45,7 @@ var/list/no_drops = list()
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_NECK)
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_GLOVES)
 	for(var/obj/item/trait_needed as anything in no_drops)
-		ADD_TRAIT(trait_needed, TRAIT_NODROP CURSED_ITEM_TRAIT(trait_needed.type))
+		ADD_TRAIT(trait_needed, TRAIT_NODROP, CURSED_ITEM_TRAIT(trait_needed.type))
 		trait_needed.name = "cursed " + trait_needed.name
 
 
@@ -80,7 +80,7 @@ var/list/no_drops = list()
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_NECK)
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_GLOVES)
 	for(var/obj/item/trait_needed as anything in no_drops)
-		ADD_TRAIT(trait_needed, TRAIT_NODROP CURSED_ITEM_TRAIT(trait_needed.type))
+		ADD_TRAIT(trait_needed, TRAIT_NODROP, CURSED_ITEM_TRAIT(trait_needed.type))
 		trait_needed.name = "cursed " + trait_needed.name
 
 /datum/outfit/cursed_bunny/magician
