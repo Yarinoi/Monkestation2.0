@@ -32,7 +32,7 @@
 	slowdown = 0
 	}
 	head = /obj/item/clothing/head/costume/bunnyhead{
-	slowdown = "0"
+	slowdown = 0
 	}
 	shoes = /obj/item/clothing/shoes/clown_shoes/clown_jester_shoes
 	neck = null
