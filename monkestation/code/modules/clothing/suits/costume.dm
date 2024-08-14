@@ -33,9 +33,9 @@
 	worn_icon_state = "gorilla"
 	flags_inv = HIDEHAIR|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 
-/obj/item/clothing/head/costume/bunnysuit/regular
+/obj/item/clothing/suit/costume/bunnysuit/regular
 	slowdown = 0
-	desc = "Considerably more cute than 'Frank'. It looks old."
+	desc = "Hop Hop Hop! It looks old."
 
 /obj/item/clothing/suit/shipwreckedsuit
 	name = "shipwrecked captain suit"
