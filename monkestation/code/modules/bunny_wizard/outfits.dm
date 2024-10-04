@@ -37,12 +37,13 @@
 	r_pocket = null
 	l_pocket = /obj/item/food/chocolatebunny
 
-var/list/no_drops = list()
+/datum/outfit/cursed_bunny/costume/post_equip(mob/living/carbon/human/equipped_on, visualsOnly=FALSE)
+	if(visualsOnly)
+		return
+	var/list/no_drops = list()
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_FEET)
-	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_ICLOTHING)
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_OCLOTHING)
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_HEAD)
-	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_NECK)
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_GLOVES)
 	for(var/obj/item/trait_needed as anything in no_drops)
 		ADD_TRAIT(trait_needed, TRAIT_NODROP, CURSED_ITEM_TRAIT(trait_needed.type))
@@ -117,7 +118,7 @@ var/list/no_drops = list()
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_HEAD)
 	no_drops += equipped_on.get_item_by_slot(ITEM_SLOT_NECK)
 	for(var/obj/item/trait_needed as anything in no_drops)
-		ADD_TRAIT(trait_needed, CURSED_ITEM_TRAIT(trait_needed.type))
+		ADD_TRAIT(trait_needed, TRAIT_NODROP, CURSED_ITEM_TRAIT(trait_needed.type))
 		trait_needed.name = "cursed " + trait_needed.name
 
 
